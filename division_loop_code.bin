@@ -1,0 +1,19 @@
+0011 0000 0000 0000 ;Load Address
+0101 110 110 1 00000 ;R6 = 0 quo
+0010 101 0 0000 1101 ;r5 = memory location of 16
+;Top of Division Loop http://users.cis.fiu.edu/~pestaina/division.pdf
+0001 101 101 1 10110 ;R5 = R5 - 10
+0000 100 0 0000 0010 ;Exit if negative (R5 = R5 - 10)
+0001 110 110 1 00001 ;R6++ (quo++)
+0000 111 1 1111 1100 ;JUMP to Top of Loop
+; Loop Exit
+0010 000 0 0000 0111 ;LD RO = ASCII '0'
+0001 000 000 000 110 ;ASCII(quo) (ADD R0 = R0 + R6)
+1111 0000 0010 0001 ;Print quo
+0010 000 0 0000 0100 ;LD RO = ASCII '0'
+0001 101 101 1 01010 ;R5 = R5 + 10
+0001 000 000 000 101 ;ASCII(rem) (ADD R0 = R0 + R5)
+1111 0000 0010 0001 ;Print rem
+1111 0000 0010 0101 ;Halt
+0000 0000 0011 0000 ;x30 ASCII '0'
+0000 0000 0001 0000 ; 16
